@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xiaqiguo.com/"/>
-  <updated>2018-04-29T13:42:58.313Z</updated>
+  <updated>2018-04-29T14:44:33.580Z</updated>
   <id>http://www.xiaqiguo.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://www.xiaqiguo.com/2017/03/28/hello-world/"/>
-    <id>http://www.xiaqiguo.com/2017/03/28/hello-world/</id>
-    <published>2017-03-27T16:00:00.000Z</published>
-    <updated>2018-04-29T13:42:58.313Z</updated>
+    <title>装饰模式</title>
+    <link href="http://www.xiaqiguo.com/2018/01/07/%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://www.xiaqiguo.com/2018/01/07/装饰模式/</id>
+    <published>2018-01-07T14:24:43.000Z</published>
+    <updated>2018-04-29T14:44:33.580Z</updated>
     
     <summary type="html">
     
@@ -35,10 +35,296 @@
     
     </summary>
     
-      <category term="test" scheme="http://www.xiaqiguo.com/categories/test/"/>
+      <category term="设计模式" scheme="http://www.xiaqiguo.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-      <category term="test" scheme="http://www.xiaqiguo.com/tags/test/"/>
+      <category term="装饰" scheme="http://www.xiaqiguo.com/tags/%E8%A3%85%E9%A5%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于递归算法设计的思考</title>
+    <link href="http://www.xiaqiguo.com/2017/12/16/%E5%85%B3%E4%BA%8E%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%80%83/"/>
+    <id>http://www.xiaqiguo.com/2017/12/16/关于递归算法设计的思考/</id>
+    <published>2017-12-16T08:50:42.000Z</published>
+    <updated>2018-04-29T14:43:51.811Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://www.xiaqiguo.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="递归" scheme="http://www.xiaqiguo.com/tags/%E9%80%92%E5%BD%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入理解进程和线程</title>
+    <link href="http://www.xiaqiguo.com/2017/11/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%BF%9B%E7%A8%8B%E5%8F%8A%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://www.xiaqiguo.com/2017/11/13/深入理解进程及线程/</id>
+    <published>2017-11-13T15:07:46.000Z</published>
+    <updated>2018-04-29T14:47:20.810Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="操作系统" scheme="http://www.xiaqiguo.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="进程,线程" scheme="http://www.xiaqiguo.com/tags/%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java的异常处理机制-续、</title>
+    <link href="http://www.xiaqiguo.com/2017/08/21/Java%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6-%E7%BB%AD%E3%80%81/"/>
+    <id>http://www.xiaqiguo.com/2017/08/21/Java的异常处理机制-续、/</id>
+    <published>2017-08-21T12:26:36.000Z</published>
+    <updated>2018-04-29T14:48:14.672Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="Java基础" scheme="http://www.xiaqiguo.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Java" scheme="http://www.xiaqiguo.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java的异常处理机制</title>
+    <link href="http://www.xiaqiguo.com/2017/08/20/Java%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6/"/>
+    <id>http://www.xiaqiguo.com/2017/08/20/Java的异常处理机制/</id>
+    <published>2017-08-20T03:40:04.000Z</published>
+    <updated>2018-04-29T14:48:47.001Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="Java基础" scheme="http://www.xiaqiguo.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Java" scheme="http://www.xiaqiguo.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>工厂模式之抽象工厂</title>
+    <link href="http://www.xiaqiguo.com/2017/08/01/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82/"/>
+    <id>http://www.xiaqiguo.com/2017/08/01/工厂模式之抽象工厂/</id>
+    <published>2017-08-01T14:32:40.000Z</published>
+    <updated>2018-04-29T14:41:36.990Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="设计模式" scheme="http://www.xiaqiguo.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="工厂" scheme="http://www.xiaqiguo.com/tags/%E5%B7%A5%E5%8E%82/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>工厂模式之工厂方法</title>
+    <link href="http://www.xiaqiguo.com/2017/08/01/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/"/>
+    <id>http://www.xiaqiguo.com/2017/08/01/工厂模式之工厂方法/</id>
+    <published>2017-08-01T12:21:52.000Z</published>
+    <updated>2018-04-29T14:41:57.135Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="设计模式" scheme="http://www.xiaqiguo.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="工厂" scheme="http://www.xiaqiguo.com/tags/%E5%B7%A5%E5%8E%82/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>工厂模式之简单工厂</title>
+    <link href="http://www.xiaqiguo.com/2017/07/29/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/"/>
+    <id>http://www.xiaqiguo.com/2017/07/29/工厂模式之简单工厂/</id>
+    <published>2017-07-29T12:40:26.000Z</published>
+    <updated>2018-04-29T14:43:05.591Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="设计模式" scheme="http://www.xiaqiguo.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="工厂" scheme="http://www.xiaqiguo.com/tags/%E5%B7%A5%E5%8E%82/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何提升你的能力？给年轻程序员的几条建议</title>
+    <link href="http://www.xiaqiguo.com/2017/07/26/%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E4%BD%A0%E7%9A%84%E8%83%BD%E5%8A%9B%EF%BC%9F%E7%BB%99%E5%B9%B4%E8%BD%BB%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%87%A0%E6%9D%A1%E5%BB%BA%E8%AE%AE/"/>
+    <id>http://www.xiaqiguo.com/2017/07/26/如何提升你的能力？给年轻程序员的几条建议/</id>
+    <published>2017-07-26T00:19:56.000Z</published>
+    <updated>2018-04-29T14:46:17.944Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="转载" scheme="http://www.xiaqiguo.com/categories/%E8%BD%AC%E8%BD%BD/"/>
+    
+    
+      <category term="转载" scheme="http://www.xiaqiguo.com/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SVN服务器搭建实践</title>
+    <link href="http://www.xiaqiguo.com/2017/07/22/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E5%AE%9E%E8%B7%B5/"/>
+    <id>http://www.xiaqiguo.com/2017/07/22/SVN服务器搭建实践/</id>
+    <published>2017-07-22T09:56:08.000Z</published>
+    <updated>2018-04-29T14:49:42.066Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="运维" scheme="http://www.xiaqiguo.com/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="svn" scheme="http://www.xiaqiguo.com/tags/svn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java静态导入</title>
+    <link href="http://www.xiaqiguo.com/2017/07/22/%E9%9D%99%E6%80%81%E5%AF%BC%E5%85%A5%E6%B5%85%E6%9E%90/"/>
+    <id>http://www.xiaqiguo.com/2017/07/22/静态导入浅析/</id>
+    <published>2017-07-22T08:44:40.000Z</published>
+    <updated>2018-04-29T14:45:35.932Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="Java基础" scheme="http://www.xiaqiguo.com/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Java" scheme="http://www.xiaqiguo.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>yum命令的简单使用</title>
+    <link href="http://www.xiaqiguo.com/2017/07/21/yum%E5%91%BD%E4%BB%A4%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
+    <id>http://www.xiaqiguo.com/2017/07/21/yum命令的简单使用/</id>
+    <published>2017-07-21T15:44:14.000Z</published>
+    <updated>2018-04-29T14:50:24.187Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="运维" scheme="http://www.xiaqiguo.com/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="yum,Linux" scheme="http://www.xiaqiguo.com/tags/yum-Linux/"/>
     
   </entry>
   

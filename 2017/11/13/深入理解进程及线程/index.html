@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="博客"><title>深入理解进程和线程 | HsiaChyiKwok'Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">深入理解进程和线程</h1><a id="logo" href="/.">HsiaChyiKwok'Blog</a><p class="description">逝者如斯夫，不舍昼夜</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/history/"><i class="fa fa-book"> 时间轴</i></a><a href="/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">深入理解进程和线程</h1><div class="post-meta">Nov 13, 2017<span> | </span><span class="category"><a href="/categories/操作系统/">操作系统</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2017/11/13/深入理解进程及线程/" href="/2017/11/13/深入理解进程及线程/#disqus_thread"></a><div class="post-content"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前段时间一直在研究多线程相关的东西，乘着时间多又回顾了下操作系统关于进程和线程的知识。</p>
+<h4 id="必须要明确的概念"><a href="#必须要明确的概念" class="headerlink" title="必须要明确的概念"></a>必须要明确的概念</h4><p>进程和线程是一种<code>资源</code>,动态的存在于系统中。从实现上来看进程是一种数据结构，是静态的概念。通常一个进程对应于系统中活动的程序。</p>
+<h4 id="进程是用来干嘛的？"><a href="#进程是用来干嘛的？" class="headerlink" title="进程是用来干嘛的？"></a>进程是用来干嘛的？</h4><p>我们知道在早期的计算机操作系统中，<code>cpu</code>一次只能执行一个任务。所以我们不能一边处理文档，一边听音乐。随着人们对多任务的需求，能够同时处理多个程序的操作系统应运而生。当然这里的同时是假的，在单核<code>cup</code>中，是通过<code>时分复用</code>来制造多任务处理的假象。（多核cup中才得以真正的并行，单核只是并发）要设计这样一个操作系统，首当其冲要解决的问题就是：<code>用什么样的一个概念来刻画同时执行的程序？</code>于是便出现了进程。可以说进程就是为了刻画程序的<code>并发性</code>而存在的，同时又共享了系统的资源。前面提到了，进程和线程本质上是一种资源。</p>
+<h4 id="进程的状态转换"><a href="#进程的状态转换" class="headerlink" title="进程的状态转换"></a>进程的状态转换</h4><p>操作系统在引入进程后，不得不付出一定的代价，因为需要对其进行调度，管理。正是操作系统不断的调度进程才让不同的程序可以占用<code>cpu</code>资源，得到执行。这里有个理解上的误区，也是一直在强调的，即进程不是程序。很多人会把进程理解为程序。<code>实际上是程序占用了进程</code>。进程是动态的概念，程序是静态的概念。虽然平时提到程序时大都在指运行中的程序。</p>
+<p>既然进程需要被调度，那么自然会有多种状态，操作系统的调度会让进程在这些状态中转换。简单介绍下进程运行的<code>三态模型</code>和<code>七态模型</code>。</p>
+<p><em>三态模型</em></p>
+<p><img src="http://ospalociz.bkt.clouddn.com/bb6f285214384407959de0cb837289e6.svg" alt="三态模型.svg"></p>
+<p>三态模型假设进程被创建出来时是就绪状态等待被调度执行，当遇到等待事件时暂停执行，最终因为事件结束再一次处于就绪状态，等待操作系统调度。显然这个模型只表达了最基本的状态，不符合实际调度需求。</p>
+<p><em>七态模型</em></p>
+<p><img src="http://ospalociz.bkt.clouddn.com/a0d21d685a0d47e8824982b9d3a45ce1.svg" alt="七态模型.svg"></p>
+<p>对于进程的调度来说，七态模型更加符合要求。比如进程刚被创建出来还为分配资源的时候处于<code>新建态</code>，当操作系统各项准备工作完毕，则进入<code>就绪态</code>。值得注意的是：这里出现了挂起的状态，此状态表达的意思是，当内存资源不够用时，一些进程往往会被对换到磁盘上去，也就是外存。</p>
+<h4 id="如何描述进程"><a href="#如何描述进程" class="headerlink" title="如何描述进程"></a>如何描述进程</h4><p>前面提到了进程是一种数据结构，那么需要用什么样的一种数据结构来描述进程呢？这里不去深究具体某种操作系统进程的实现，试着分析下进程需要包括哪些必要的信息。首先进程需要被调度执行，所以必须有一个相应的结构存储进程的标志信息，称之为<code>控制块</code>（PCB,Process Control Block）。其次进程需要执行程序，所以有专门存放代码的<code>程序块</code>，进程运行程序以及本身都要存放一些数据，所以存在一个私有<code>数据块</code>。在<code>数据块</code>中可以开辟用户运行程序的<code>用户栈</code>。于此同时，进程又必须拥有一个核心栈，用于在<code>内核态</code>执行内核程序。</p>
+<p>有关<code>用户态</code>和<code>内核态</code>的区别可以参考这篇文章<a href="https://yq.aliyun.com/articles/6033" target="_blank" rel="noopener">内核态和用户态的区别</a></p>
+<p>到这里，从概念上了解了进程的基本组成。对于简单理解进程是什么已经足够了。</p>
+<h4 id="如何调度进程"><a href="#如何调度进程" class="headerlink" title="如何调度进程"></a>如何调度进程</h4><p>一般来说，操作系统会在不同的层次上对整个系统中运行的进程进行调度，最低一层次则是直接决定哪个进程的状态。通常所说的调度实际上包括：决定进程使用cpu的次序以及进程的切换工作。这里集中关注下如何判定进程执行次序，即调度算法。</p>
+<h5 id="常见的几种调度算法"><a href="#常见的几种调度算法" class="headerlink" title="常见的几种调度算法"></a>常见的几种调度算法</h5><ol>
+<li>先来先服务算法</li>
+<li>最短优先算法</li>
+<li>最短剩余时间算法</li>
+<li>最高响应比算法</li>
+<li>优先级调度算法</li>
+<li>轮转调度算法</li>
+<li>多级反馈队列调度算法</li>
+</ol>
+<p>低级调度主要决定就绪进程或线程队列中哪一个可以立即占用处理器执行，执行的非常频繁。一般来说调度分为<code>抢占型</code>和<code>独占型</code>。内核关键程序使用<code>独占型</code>，普通的则采用<code>抢占型</code>，虽然后者更消耗系统资源，但是并发程度更高，使得性能更好。</p>
+<p>这里简单介绍下<code>多级反馈队列调度算法</code>。MLFQ算法的核心思想是：建立多个优先级不同的等待队列，对列的优先级可以事先确定。优先级越高的队列的进程或线程优先被调度执行，但是优先级越高所分得的时间片就越少。优先级最低的队列会按照先来先服务算法调度。当一个耗时较多的进程或线程没有在所分得的时间片内执行完，那么它就会被加入到下一级队列。一直到最低一级。大家可能会注意到这样可能会产生<code>饥饿</code>的现象。比如一个特别耗时的进程，它最终会来到最低级队列，如果系统一段时间内有源源不断的进程被加入进来。那么这个进程就不会得到执行。怎么办呢？？我们可以按等待时间让进程的优先级升高。这就形成了一个反馈机制。系统根据这个算法就能够比较合理的进行进程/线程的调度。</p>
+<h4 id="进程上下文切换和处理器状态转换"><a href="#进程上下文切换和处理器状态转换" class="headerlink" title="进程上下文切换和处理器状态转换"></a>进程上下文切换和处理器状态转换</h4><h4 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h4><p>前面一直提到进程/线程的调度，实际上没有想象的把进程/线程队列入队，出队那么简单。一个进程放弃执行权利，把cpu让给另一个进程还要进行很多其他操作。统称为上下文（context）的切换。简单来说需要进行两个步骤：</p>
+<ol>
+<li>将当前进程/线程的运行相关的信息保存下来，可以理解为保存现场，并移入等待队列。</li>
+<li>调度一个就绪进程/线程占有cpu执行程序。</li>
+</ol>
+<h4 id="处理器状态转换"><a href="#处理器状态转换" class="headerlink" title="处理器状态转换"></a>处理器状态转换</h4><p>与进程上下文切换有关的是处理器状态转换，值得注意的是，处理器状态的转换不一定会引起进程上下文的切换。比如发生了系统中断，那么这个时候处理器会从用户态转化到内核态去处理中断处理程序，此时还是在进程的上下文中。然后可以恢复到用户态再继续执行进程。我的理解是：进程上下文切换是进程之间的事情，进程的上下文实际上是开辟在用户空间的。虽然执行中断或者内核例程也暂停了当前进程的执行，但是并不会破坏进程的上下文。因为中断或例程的上文是存在于内核空间的。</p>
+<h4 id="为什么要引入线程"><a href="#为什么要引入线程" class="headerlink" title="为什么要引入线程"></a>为什么要引入线程</h4><blockquote>
+<p>如果说操作系统引入进程的目的是使得多个程序可以并发执行，提高系统资源利用率，那么线程就是为了让进程切换的代价更低，并发的粒度更细，进一步提高系统效率。实际上在现代操作系统中，例如<code>Linux</code>，线程是操作系统直接调度的最小单位，而进程作为资源分配和保护的基本单位。一个进程至少包括一个主线程。</p>
+</blockquote>
+<h4 id="进程和线程的异同"><a href="#进程和线程的异同" class="headerlink" title="进程和线程的异同"></a>进程和线程的异同</h4><p>与进程不同的是线程不拥有资源，它是一条程序的执行路径，拥有自己的私有地址空间和程序计数器。暂停时会保存自己的运行上下文。一个进程中的线程通常共享内部资源，所以线程间的通信要容易的多。多线程进程实际上和线程是包含的关系。进程像一个大管家一样，为线程服务：提供虚拟的地址空间，提供全局数据的管理等等。线程的职责更少，所以更加轻量。同处于一个进程中的线程切换的成本更低，大大提高了并发度。</p>
+<h4 id="线程的实现"><a href="#线程的实现" class="headerlink" title="线程的实现"></a>线程的实现</h4><p>多线程的实现分为三类：内核级线程（Kernel Level Thread ,KLT），用户级线程（ULT）,混合式线程。个人水平有限，大家可以通过这篇文章 <a href="http://www.linuxidc.com/Linux/2016-09/135308.htm" target="_blank" rel="noopener">Java实现线程的三种方式</a>了解下Java多线程的实现原理。</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>在简单了解了进程和线程的相关知识后，后面会着重探讨下并发程序设计中，同步，通信和死锁的问题。</p>
+</div><div class="tags"><a href="/tags/进程-线程/">进程,线程</a></div><div class="post-nav"><a class="pre" href="/2017/12/16/关于递归算法设计的思考/">关于递归算法设计的思考</a><a class="next" href="/2017/08/21/Java的异常处理机制-续、/">Java的异常处理机制-续、</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'hsiachyikwok';
+var disqus_identifier = '2017/11/13/深入理解进程及线程/';
+var disqus_title = '深入理解进程和线程';
+var disqus_url = 'http://www.xiaqiguo.com/2017/11/13/深入理解进程及线程/';
+$('.btn_click_load').click(function() {
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  $('.btn_click_load').css('display','none');
+});
+$.ajax({
+  url: 'https://disqus.com/next/config.json',
+  timeout: 3000,
+  type: 'GET',
+  success: (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    $('.btn_click_load').css('display','none');
+  })(),
+  error: function() {
+    $('.btn_click_load').css('display','block');
+  }
+});</script><script id="dsq-count-scr" src="//hsiachyikwok.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://www.xiaqiguo.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/转载/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维/">运维</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/yum-Linux/" style="font-size: 15px;">yum,Linux</a> <a href="/tags/递归/" style="font-size: 15px;">递归</a> <a href="/tags/转载/" style="font-size: 15px;">转载</a> <a href="/tags/工厂/" style="font-size: 15px;">工厂</a> <a href="/tags/进程-线程/" style="font-size: 15px;">进程,线程</a> <a href="/tags/装饰/" style="font-size: 15px;">装饰</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/07/装饰模式/">装饰模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/16/关于递归算法设计的思考/">关于递归算法设计的思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/13/深入理解进程及线程/">深入理解进程和线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/Java的异常处理机制-续、/">Java的异常处理机制-续、</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/20/Java的异常处理机制/">Java的异常处理机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/工厂模式之抽象工厂/">工厂模式之抽象工厂</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/工厂模式之工厂方法/">工厂模式之工厂方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/29/工厂模式之简单工厂/">工厂模式之简单工厂</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/如何提升你的能力？给年轻程序员的几条建议/">如何提升你的能力？给年轻程序员的几条建议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/SVN服务器搭建实践/">SVN服务器搭建实践</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.taoshengxu.com/" title="陶胜旭的博客" target="_blank">陶胜旭的博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">HsiaChyiKwok'Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

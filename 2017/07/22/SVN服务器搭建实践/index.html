@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="博客"><title>SVN服务器搭建实践 | HsiaChyiKwok'Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">SVN服务器搭建实践</h1><a id="logo" href="/.">HsiaChyiKwok'Blog</a><p class="description">逝者如斯夫，不舍昼夜</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/history/"><i class="fa fa-book"> 时间轴</i></a><a href="/guestbook/"><i class="fa fa-comments"> 留言</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">SVN服务器搭建实践</h1><div class="post-meta">Jul 22, 2017<span> | </span><span class="category"><a href="/categories/运维/">运维</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2017/07/22/SVN服务器搭建实践/" href="/2017/07/22/SVN服务器搭建实践/#disqus_thread"></a><div class="post-content"><p>本着爱折腾的精神，搭建了<code>svn</code>服务器。</p>
+<h2 id="什么是svn？"><a href="#什么是svn？" class="headerlink" title="什么是svn？"></a>什么是svn？</h2><blockquote>
+<p>Apache Subversion（简称SVN，svn），一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS转移到Subversion。 —维基百科</p>
+</blockquote>
+<h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><blockquote>
+<p><strong><em>aliyun:CentOS Linux release 7.3.1611 (Core)</em></strong></p>
+</blockquote>
+<h2 id="详细过程"><a href="#详细过程" class="headerlink" title="详细过程"></a>详细过程</h2><h3 id="安装svn"><a href="#安装svn" class="headerlink" title="安装svn"></a>安装svn</h3><h4 id="使用yum安装"><a href="#使用yum安装" class="headerlink" title="使用yum安装"></a>使用yum安装</h4><p><code>yum -y install subversion</code></p>
+<h4 id="检查版本"><a href="#检查版本" class="headerlink" title="检查版本"></a>检查版本</h4><p><code>svn --version</code></p>
+<h4 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h4><p><code>systemctl enable svnserve.service</code> 或 <code>systemctl enable svnserve</code></p>
+<h3 id="配置svn"><a href="#配置svn" class="headerlink" title="配置svn"></a>配置svn</h3><h4 id="配置svn目录"><a href="#配置svn目录" class="headerlink" title="配置svn目录"></a>配置svn目录</h4><p><code>mkdir /home/svn</code>这里我把它放在<code>/home/svn</code>目录下。</p>
+<h4 id="新建版本仓库"><a href="#新建版本仓库" class="headerlink" title="新建版本仓库"></a>新建版本仓库</h4><p><code>svnadmin create /home/svn/project</code></p>
+<h4 id="仓库下文件目录简介"><a href="#仓库下文件目录简介" class="headerlink" title="仓库下文件目录简介"></a>仓库下文件目录简介</h4><blockquote>
+<ul>
+<li><code>conf</code> 存放版本库的配置文件，包括<code>authz</code>,<code>passwd</code>,<code>svnserve.conf</code></li>
+<li><code>db</code> 存放着 <code>Subversion</code> 所要管理的所有受版本控制的数据，不同的存储方式（<code>Berkeley DB</code>或者 <code>FSFS</code>）下有着不同的目录结构，不过我们一般不用直接修改和查看这个目录下的内容，<code>Subversion</code> 的命令可以安全的操作这个目录。</li>
+<li><code>hooks</code> 存放着钩子脚本及其模版（一种版本库事件触发程序）。</li>
+<li><code>locks</code> 存放着 <code>Subversion</code> 版本库锁定数据。</li>
+<li><code>format</code> 记录了版本库的布局版本号。</li>
+<li><code>README.txt</code> 这个就不多说了，自行阅读。</li>
+</ul>
+</blockquote>
+<h4 id="配置用户名密码"><a href="#配置用户名密码" class="headerlink" title="配置用户名密码"></a>配置用户名密码</h4><blockquote>
+<p><code>passwd</code> 用户名和密码</p>
+</blockquote>
+<p>非常简单，使用<code>username</code> = <code>passwd</code>格式就可以了。</p>
+<h4 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h4><blockquote>
+<p><code>authz</code> 资源访问权限</p>
+</blockquote>
+<p>该配置文件由一个<code>[groups]</code>配置段和若干个版本库路径权限段组成。</p>
+<p><code>[groups]</code>配置段中配置行格式如下：</p>
+<p><code>&lt;用户组&gt;</code> = <code>&lt;用户列表&gt;</code></p>
+<p>用户列表由若干个用户组或用户名构成，用户组或用户名之间用逗号<code>&quot;,&quot;</code>分隔，引用用户组时要使用前缀<code>&quot;@&quot;</code>(如：引用用户组<code>&quot;all&quot;</code>要使用字符串<code>&quot;@all&quot;</code>)。</p>
+<p>版本库路径权限段的段名格式如下：</p>
+<p><code>[&lt;版本库名&gt;:&lt;路径&gt;]</code></p>
+<p>如版本库abc路径/tmp的版本库路径权限段的段名为<code>&quot;[abc:/tmp]&quot;</code>。</p>
+<p>可省略段名中的版本库名。若省略版本库名，则该版本库路径权限段对所有版本库中相同路径的访问控制都有效。</p>
+<p>如：段名为<code>&quot;[/tmp]&quot;</code>的版本库路径权限段设置了所有引用该权限配置文件的版本库中目录<code>&quot;/tmp&quot;</code>的访问权限。</p>
+<p>版本库路径权限段中配置行格式有如下三种：</p>
+<p><code>&lt;用户名&gt;</code> = <code>&lt;权限&gt;</code></p>
+<p><code>&lt;用户组&gt;</code> = <code>&lt;权限&gt;</code></p>
+<p><code>&quot;*&quot;</code>= <code>&lt;权限&gt;</code></p>
+<p>其中，<code>&quot;*&quot;</code>表示任何用户；权限的取值范围为<code>&#39;&#39;</code>、<code>&#39;r&#39;</code>和<code>&#39;rw&#39;</code>，<code>&#39;&#39;</code>表示对该版本库路径无任何权限，<code>&#39;r&#39;</code>表示具有只读权限，<code>&#39;rw&#39;</code>表示有读写权限。</p>
+<p><em>注意：每行配置只能配置单个用户或用户组。</em></p>
+<p><em>示例配置:</em></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[groups]</span><br><span class="line">g_admin = admin,thinker</span><br><span class="line"><span class="section">[admintools:/]</span></span><br><span class="line">@g_admin = rw</span><br><span class="line">* =</span><br><span class="line"><span class="section">[test:/home/thinker]</span></span><br><span class="line">thinker = rw</span><br><span class="line">* = r</span><br></pre></td></tr></table></figure>
+<p>在上述配置文件中，定义了一个用户组<code>&quot;g_admin&quot;</code>，该用户组包含用户<code>&quot;admin&quot;</code>和<code>&quot;thinker&quot;</code>。然后定义了2个版本库路径权限段。 其中，版本库<code>&quot;admintools&quot;</code>只有用户组<code>&quot;g_admin&quot;</code>可读写，其他用户无任何权限；版本库<code>&quot;test&quot;</code>中路径<code>&quot;/home /thinker&quot;</code>只有用户<code>&quot;thinker&quot;</code>有读写权限，其他用户只有可读权限。</p>
+<h4 id="配置svnserve"><a href="#配置svnserve" class="headerlink" title="配置svnserve"></a>配置svnserve</h4><blockquote>
+<p><code>svnserve.conf</code> 服务器配置</p>
+</blockquote>
+<p><em>主要配置：</em></p>
+<ol>
+<li><p><code>anon-access</code> 控制非鉴权用户访问版本库的权限。取值范围为<code>&quot;write&quot;</code>、<code>&quot;read&quot;</code>和<code>&quot;none&quot;</code>。<br>即<code>&quot;write&quot;</code>为可读可写，<code>&quot;read&quot;</code>为只读，<code>&quot;none&quot;</code>表示无访问权限。<br>缺省值：<code>read</code>，这里设置为<code>none</code></p>
+</li>
+<li><p><code>auth-access</code> 控制鉴权用户访问版本库的权限。取值范围为<code>&quot;write&quot;</code>、<code>&quot;read&quot;</code>和<code>&quot;none&quot;</code>。<br>即<code>&quot;write&quot;</code>为可读可写，<code>&quot;read&quot;</code>为只读，<code>&quot;none&quot;</code>表示无访问权限。<br>缺省值：write 这里设置为<code>write</code></p>
+</li>
+<li><p><code>password-db</code> 指定用户名口令文件名。除非指定绝对路径，否则文件位置为相对<code>conf</code><br>目录的相对路径。<br>缺省值：<code>passwd</code> 这里设置为<code>passwd</code></p>
+</li>
+<li><p><code>authz-db</code> 指定权限配置文件名，通过该文件可以实现以路径为基础的访问控制。<br>除非指定绝对路径，否则文件位置为相对<code>conf</code>目录的相对路径。<br>缺省值：<code>authz</code> 这里设置为<code>authz</code></p>
+</li>
+<li><p><code>realm</code> 指定版本库的认证域，即在登录时提示的认证域名称。若两个版本库的<br>认证域相同，建议使用相同的用户名口令数据文件。<br>缺省值：一个<code>UUID</code>(<code>Universal Unique IDentifier</code>，全局唯一标示)。<br>这里建议设置为版本库名称</p>
+</li>
+</ol>
+<h3 id="启动svn"><a href="#启动svn" class="headerlink" title="启动svn"></a>启动svn</h3><p><code>vi /etc/sysconfig/svnserve</code> 将<code>OPTIONS</code>改为<code>&quot;-r /home/svn&quot;</code>,即<code>svn仓库根目录</code>。</p>
+<p>而后<code>systemctl start svnserve</code>或<code>service svnserve start</code></p>
+<p>使用<code>systemctl status svnserve.service</code>查看服务启动状态。</p>
+<p>使用<code>service svnserve stop</code>停止服务或者使用<code>ps aux|grep svnserve</code>后，<code>kill</code>掉进程。</p>
+<p>使用 <code>service svnserve restart</code>重启服务。</p>
+<h3 id="使用客户端连接"><a href="#使用客户端连接" class="headerlink" title="使用客户端连接"></a>使用客户端连接</h3><ul>
+<li><code>windows</code>下载<a href="https://tortoisesvn.net/downloads.zh.html" target="_blank" rel="noopener"><code>TortoiseSVN</code></a></li>
+<li><code>mac os</code> 下载<a href="http://www.sdifen.com/cornerstone303.html" target="_blank" rel="noopener"><code>Cornstone</code></a></li>
+</ul>
+<pre><code>**然后`svn checkout`**
+</code></pre><h2 id="svn的存储特性简介"><a href="#svn的存储特性简介" class="headerlink" title="svn的存储特性简介"></a>svn的存储特性简介</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Berkeley DB</th>
+<th>FSFS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对操作中断的敏感</td>
+<td>很敏感；系统崩溃或者权限问题会导致数据库“塞住”，需要定期进行恢复。</td>
+<td>不敏感</td>
+</tr>
+<tr>
+<td>可只读加载</td>
+<td>不能</td>
+<td>可以</td>
+</tr>
+<tr>
+<td>存储平台无关</td>
+<td>不能</td>
+<td>可以</td>
+</tr>
+<tr>
+<td>可从网络文件系统访问</td>
+<td>不能</td>
+<td>可以</td>
+</tr>
+<tr>
+<td>版本库大小</td>
+<td>稍大</td>
+<td>稍小</td>
+</tr>
+<tr>
+<td>扩展性：修订版本树数量</td>
+<td>无限制</td>
+<td>某些本地文件系统在处理单一目录包含上千个条目时会出现问题。</td>
+</tr>
+<tr>
+<td>扩展性：文件较多的目录</td>
+<td>较慢</td>
+<td>较慢</td>
+</tr>
+<tr>
+<td>检出最新代码的速度</td>
+<td>较快</td>
+<td>可以</td>
+</tr>
+<tr>
+<td>大量提交的速度</td>
+<td>较慢，但时间被分配在整个提交操作中</td>
+<td>较快，但最后较长的延时可能会导致客户端操作超时</td>
+</tr>
+<tr>
+<td>组访问权处理</td>
+<td>对于用户的 umask 设置十分敏感，最好只由一个用户访问。</td>
+<td>对 umask 设置不敏感</td>
+</tr>
+<tr>
+<td>功能成熟时间</td>
+<td>2001 年</td>
+<td>2004 年</td>
+</tr>
+</tbody>
+</table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>svn管理员可以通过这3个配置文件设置svnserve服务的用户名口令，以及对版本库路径的访问权限。这些配置文件保存后就立即生效，不需要重启svnserve服务。</p>
+</div><div class="tags"><a href="/tags/svn/">svn</a></div><div class="post-nav"><a class="pre" href="/2017/07/26/如何提升你的能力？给年轻程序员的几条建议/">如何提升你的能力？给年轻程序员的几条建议</a><a class="next" href="/2017/07/22/静态导入浅析/">Java静态导入</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论 「请确保 disqus.com 可以正常加载」</button></div><script>var disqus_shortname = 'hsiachyikwok';
+var disqus_identifier = '2017/07/22/SVN服务器搭建实践/';
+var disqus_title = 'SVN服务器搭建实践';
+var disqus_url = 'http://www.xiaqiguo.com/2017/07/22/SVN服务器搭建实践/';
+$('.btn_click_load').click(function() {
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+  $('.btn_click_load').css('display','none');
+});
+$.ajax({
+  url: 'https://disqus.com/next/config.json',
+  timeout: 3000,
+  type: 'GET',
+  success: (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    $('.btn_click_load').css('display','none');
+  })(),
+  error: function() {
+    $('.btn_click_load').css('display','block');
+  }
+});</script><script id="dsq-count-scr" src="//hsiachyikwok.disqus.com/count.js" async></script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://www.xiaqiguo.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/转载/">转载</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/运维/">运维</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/svn/" style="font-size: 15px;">svn</a> <a href="/tags/yum-Linux/" style="font-size: 15px;">yum,Linux</a> <a href="/tags/递归/" style="font-size: 15px;">递归</a> <a href="/tags/转载/" style="font-size: 15px;">转载</a> <a href="/tags/工厂/" style="font-size: 15px;">工厂</a> <a href="/tags/进程-线程/" style="font-size: 15px;">进程,线程</a> <a href="/tags/装饰/" style="font-size: 15px;">装饰</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/07/装饰模式/">装饰模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/16/关于递归算法设计的思考/">关于递归算法设计的思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/13/深入理解进程及线程/">深入理解进程和线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/21/Java的异常处理机制-续、/">Java的异常处理机制-续、</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/20/Java的异常处理机制/">Java的异常处理机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/工厂模式之抽象工厂/">工厂模式之抽象工厂</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/01/工厂模式之工厂方法/">工厂模式之工厂方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/29/工厂模式之简单工厂/">工厂模式之简单工厂</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/如何提升你的能力？给年轻程序员的几条建议/">如何提升你的能力？给年轻程序员的几条建议</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/22/SVN服务器搭建实践/">SVN服务器搭建实践</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.taoshengxu.com/" title="陶胜旭的博客" target="_blank">陶胜旭的博客</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">HsiaChyiKwok'Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
