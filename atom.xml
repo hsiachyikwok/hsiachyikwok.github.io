@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>蜀道难</title>
+  <title>HsiaChyiKwok&#39;Blog</title>
   
-  <subtitle>问君西游何时还</subtitle>
+  <subtitle>逝者如斯夫，不舍昼夜</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.xiaqiguo.com/"/>
-  <updated>2018-04-27T15:37:37.131Z</updated>
+  <updated>2018-04-29T13:42:58.313Z</updated>
   <id>http://www.xiaqiguo.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://www.xiaqiguo.com/2018/04/27/hello-world/"/>
-    <id>http://www.xiaqiguo.com/2018/04/27/hello-world/</id>
-    <published>2018-04-27T15:37:37.131Z</published>
-    <updated>2018-04-27T15:37:37.131Z</updated>
+    <link href="http://www.xiaqiguo.com/2017/03/28/hello-world/"/>
+    <id>http://www.xiaqiguo.com/2017/03/28/hello-world/</id>
+    <published>2017-03-27T16:00:00.000Z</published>
+    <updated>2018-04-29T13:42:58.313Z</updated>
     
     <summary type="html">
     
@@ -35,6 +35,10 @@
     
     </summary>
     
+      <category term="test" scheme="http://www.xiaqiguo.com/categories/test/"/>
+    
+    
+      <category term="test" scheme="http://www.xiaqiguo.com/tags/test/"/>
     
   </entry>
   
