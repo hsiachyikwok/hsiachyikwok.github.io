@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>写在工作一年之际</title>
+      <link href="/2018/05/02/%E5%86%99%E5%9C%A8%E5%B7%A5%E4%BD%9C%E4%B8%80%E5%B9%B4%E4%B9%8B%E9%99%85/"/>
+      <url>/2018/05/02/%E5%86%99%E5%9C%A8%E5%B7%A5%E4%BD%9C%E4%B8%80%E5%B9%B4%E4%B9%8B%E9%99%85/</url>
+      <content type="html"><![CDATA[<p>加上实习，工作了一年多了（一年零两个月^_^）。记得当初实习了两个多月，也发过一点感想，经过这么长时间，对人对事，对工作，生活的看法发生了很大的改变。写点文字记录下此时的心境。</p><p>回首几年的学生生涯，尤其怀念那种单纯的迷茫，在漫长的时间里漫无目的的徜徉。我何尝未努力过，大学一年级就和师兄们鼓捣学习安卓。不是因为喜欢，而是不想在时间里迷失。结果因为自己的单纯，玻璃心，别人一句无意之言就离开了。这算是彻底离开积极的土壤了。睡觉，游戏，发呆，充斥了整个大二。等到大三，听说有同学都拿到阿里的实习offer了，我还在cosplay社团演舞台剧呢！事实证明，该来的都会来。与其让他推着你走，不如主动迈出步子。是时候学点技术了，不然毕业怎么办？（一开始就没打算继续读书）。那时正在教授计算机网络，很有兴趣。于是来到实验室呆了一个学期，发现并不是自己想做的。怎么办？？大四的秋招总要做点事情不是吗？（暑期实习是没戏了）这才想起来，我会点Java。好吧，大部分人都学了Java。打开电脑开干吧。就这样过了几个月。懵懵懂懂，浑浑噩噩，拿着打印好的简历经历了一个月的失败。终于有公司要我了。（托大一刷过的OJ的福，基础还算过的去）我就该这样吗？长期的孤军奋战让我丧失了斗志。也许有失必有得，我收获了爱情。以前的故事就到这。接下来毕业散伙，熟悉的剧情。</p><p>去年2月到现在的生活历历在目，抛掉过去，脱去学生外衣的生活是那么新鲜。有人说平淡的日子，会让你感觉恍如昨日。现在我差不多又是这个感觉了，越来越看清工作和生活的真实面目。对工作的态度，最常听见的话就是”对事不对人”。现在我觉得不完全对，闷头做事其实并不是最好，做事也看和什么人一起。所以就要求我们不仅要有做好事的能力，更要有辨别人的能力。对应到工作上，就是要进一个好的团队，因为优秀的人做优秀的事。虽然我没能在一开始进入一个好的圈子，做优秀的自己不也足够了吗？一年前我总想，一年后我要怎样怎样。结果欲速不达，有些东西是需要积累和时间的沉淀的。一开始我常常处理不好工作和生活，尤其是感情生活，闹出了不少矛盾。为了她，现在的我踏实许多。到底要成为什么样的人？怎么样才能不焦虑？至今无解。</p><p>工作和生活的本质是什么？— 过日子。既然要开心的过日子。那就慢慢过吧~~~</p>]]></content>
+      
+      <categories>
+          
+          <category> mind </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 感想 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>装饰模式</title>
       <link href="/2018/01/08/%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/"/>
       <url>/2018/01/08/%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/</url>
@@ -213,27 +234,6 @@
     </entry>
     
     <entry>
-      <title>yum命令的简单使用</title>
-      <link href="/2017/07/22/yum%E5%91%BD%E4%BB%A4%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
-      <url>/2017/07/22/yum%E5%91%BD%E4%BB%A4%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
-      <content type="html"><![CDATA[<p>平时维护着一台个人阿里云服务器，上面跑着blog和一些小玩意。管理程序经常使用yum命令，所以总结下它的一些常用的用法。<br><a id="more"></a></p><h2 id="什么是yum？"><a href="#什么是yum？" class="headerlink" title="什么是yum？"></a>什么是yum？</h2><p>yum（Yellow dog Updater, Modified）命令是在Fedora和RedHat以及SUSE中基于rpm的软件包管理器，它可以使系统管理人员交互和自动化地更细与管理RPM软件包，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。</p><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><blockquote><p>yum (选项)(参数)</p></blockquote><hr><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><blockquote><ul><li>-h：显示帮助信息；</li><li>-y：对所有的提问都回答“yes”；</li><li>-c：指定配置文件；</li><li>-q：安静模式；</li><li>-v：详细模式；</li><li>-d：设置调试等级（0-10）；</li><li>-e：设置错误等级（0-10）；</li><li>-R：设置yum处理一个命令的最大等待时间；</li><li>-C：完全从缓存中运行，而不去下载或者更新任何头文件。 参数</li></ul></blockquote><hr><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><blockquote><ul><li>install：安装rpm软件包；</li><li>update：更新rpm软件包；</li><li>check-update：检查是否有可用的更新rpm软件包；</li><li>remove：删除指定的rpm软件包；</li><li>list：显示软件包的信息；</li><li>search：检查软件包的信息；</li><li>info：显示指定的rpm软件包的描述信息和概要信息；</li><li>clean：清理yum过期的缓存；</li><li>shell：进入yum的shell提示符；</li><li>resolvedep：显示rpm软件包的依赖关系；</li><li>localinstall：安装本地的rpm软件包；</li><li>localupdate：显示本地rpm软件包进行更新；</li><li>deplist：显示rpm软件包的所有依赖关系。</li></ul></blockquote><hr><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><blockquote><ul><li>yum install #全部安装</li><li>yum install package1 #安装指定的安装包package1</li><li>yum groupinsall group1 #安装程序组group1</li></ul></blockquote><hr><h3 id="更新和升级"><a href="#更新和升级" class="headerlink" title="更新和升级"></a>更新和升级</h3><blockquote><ul><li>yum update #全部更新</li><li>yum update package1 #更新指定程序包package1</li><li>yum check-update #检查可更新的程序</li><li>yum upgrade package1 #升级指定程序包package1</li><li>yum groupupdate group1 #升级程序组group1</li></ul></blockquote><hr><h3 id="查找和显示"><a href="#查找和显示" class="headerlink" title="查找和显示"></a>查找和显示</h3><blockquote><ul><li>yum info package1 #显示安装包信息package1</li><li>yum list #显示所有已经安装和可以安装的程序包</li><li>yum list package1 #显示指定程序包安装情况package1</li><li>yum groupinfo group1 #显示程序组group1信息</li><li>yum search string 根据关键字string查找安装包</li></ul></blockquote><hr><h3 id="删除程序"><a href="#删除程序" class="headerlink" title="删除程序"></a>删除程序</h3><blockquote><ul><li>yum remove | erase package1 #删除程序包package1</li><li>yum groupremove group1 #删除程序组group1</li><li>yum deplist package1 #查看程序package1依赖情况</li></ul></blockquote><hr><h3 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h3><blockquote><ul><li>yum clean packages #清除缓存目录下的软件包</li><li>yum clean headers #清除缓存目录下的 headers</li><li>yum clean oldheaders #清除缓存目录下旧的 headers</li></ul></blockquote><hr><h4 id="参考：http-man-linuxde-net"><a href="#参考：http-man-linuxde-net" class="headerlink" title="参考：http://man.linuxde.net/"></a>参考：<a href="http://man.linuxde.net/" target="_blank" rel="noopener">http://man.linuxde.net/</a></h4>]]></content>
-      
-      <categories>
-          
-          <category> 运维 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>Java静态导入</title>
       <link href="/2017/07/22/%E9%9D%99%E6%80%81%E5%AF%BC%E5%85%A5%E6%B5%85%E6%9E%90/"/>
       <url>/2017/07/22/%E9%9D%99%E6%80%81%E5%AF%BC%E5%85%A5%E6%B5%85%E6%9E%90/</url>
@@ -249,6 +249,27 @@
         <tags>
             
             <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>yum命令的简单使用</title>
+      <link href="/2017/07/22/yum%E5%91%BD%E4%BB%A4%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
+      <url>/2017/07/22/yum%E5%91%BD%E4%BB%A4%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<p>平时维护着一台个人阿里云服务器，上面跑着blog和一些小玩意。管理程序经常使用yum命令，所以总结下它的一些常用的用法。<br><a id="more"></a></p><h2 id="什么是yum？"><a href="#什么是yum？" class="headerlink" title="什么是yum？"></a>什么是yum？</h2><p>yum（Yellow dog Updater, Modified）命令是在Fedora和RedHat以及SUSE中基于rpm的软件包管理器，它可以使系统管理人员交互和自动化地更细与管理RPM软件包，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。</p><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><blockquote><p>yum (选项)(参数)</p></blockquote><hr><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><blockquote><ul><li>-h：显示帮助信息；</li><li>-y：对所有的提问都回答“yes”；</li><li>-c：指定配置文件；</li><li>-q：安静模式；</li><li>-v：详细模式；</li><li>-d：设置调试等级（0-10）；</li><li>-e：设置错误等级（0-10）；</li><li>-R：设置yum处理一个命令的最大等待时间；</li><li>-C：完全从缓存中运行，而不去下载或者更新任何头文件。 参数</li></ul></blockquote><hr><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><blockquote><ul><li>install：安装rpm软件包；</li><li>update：更新rpm软件包；</li><li>check-update：检查是否有可用的更新rpm软件包；</li><li>remove：删除指定的rpm软件包；</li><li>list：显示软件包的信息；</li><li>search：检查软件包的信息；</li><li>info：显示指定的rpm软件包的描述信息和概要信息；</li><li>clean：清理yum过期的缓存；</li><li>shell：进入yum的shell提示符；</li><li>resolvedep：显示rpm软件包的依赖关系；</li><li>localinstall：安装本地的rpm软件包；</li><li>localupdate：显示本地rpm软件包进行更新；</li><li>deplist：显示rpm软件包的所有依赖关系。</li></ul></blockquote><hr><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><blockquote><ul><li>yum install #全部安装</li><li>yum install package1 #安装指定的安装包package1</li><li>yum groupinsall group1 #安装程序组group1</li></ul></blockquote><hr><h3 id="更新和升级"><a href="#更新和升级" class="headerlink" title="更新和升级"></a>更新和升级</h3><blockquote><ul><li>yum update #全部更新</li><li>yum update package1 #更新指定程序包package1</li><li>yum check-update #检查可更新的程序</li><li>yum upgrade package1 #升级指定程序包package1</li><li>yum groupupdate group1 #升级程序组group1</li></ul></blockquote><hr><h3 id="查找和显示"><a href="#查找和显示" class="headerlink" title="查找和显示"></a>查找和显示</h3><blockquote><ul><li>yum info package1 #显示安装包信息package1</li><li>yum list #显示所有已经安装和可以安装的程序包</li><li>yum list package1 #显示指定程序包安装情况package1</li><li>yum groupinfo group1 #显示程序组group1信息</li><li>yum search string 根据关键字string查找安装包</li></ul></blockquote><hr><h3 id="删除程序"><a href="#删除程序" class="headerlink" title="删除程序"></a>删除程序</h3><blockquote><ul><li>yum remove | erase package1 #删除程序包package1</li><li>yum groupremove group1 #删除程序组group1</li><li>yum deplist package1 #查看程序package1依赖情况</li></ul></blockquote><hr><h3 id="清除缓存"><a href="#清除缓存" class="headerlink" title="清除缓存"></a>清除缓存</h3><blockquote><ul><li>yum clean packages #清除缓存目录下的软件包</li><li>yum clean headers #清除缓存目录下的 headers</li><li>yum clean oldheaders #清除缓存目录下旧的 headers</li></ul></blockquote><hr><h4 id="参考：http-man-linuxde-net"><a href="#参考：http-man-linuxde-net" class="headerlink" title="参考：http://man.linuxde.net/"></a>参考：<a href="http://man.linuxde.net/" target="_blank" rel="noopener">http://man.linuxde.net/</a></h4>]]></content>
+      
+      <categories>
+          
+          <category> 运维 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
             
         </tags>
       
