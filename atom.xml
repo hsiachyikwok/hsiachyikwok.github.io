@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.xiaqiguo.com/"/>
-  <updated>2018-05-03T15:31:14.783Z</updated>
+  <updated>2018-05-06T05:09:21.765Z</updated>
   <id>http://blog.xiaqiguo.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>瞎折腾之裸辞体验</title>
+    <link href="http://blog.xiaqiguo.com/2018/05/03/%E4%BD%93%E9%AA%8C%E8%A3%B8%E8%BE%9E/"/>
+    <id>http://blog.xiaqiguo.com/2018/05/03/体验裸辞/</id>
+    <published>2018-05-03T15:32:48.000Z</published>
+    <updated>2018-05-06T05:09:21.765Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+      <category term="感想" scheme="http://blog.xiaqiguo.com/categories/%E6%84%9F%E6%83%B3/"/>
+    
+    
+      <category term="mind" scheme="http://blog.xiaqiguo.com/tags/mind/"/>
+    
+  </entry>
   
   <entry>
     <title>写在工作一年之际</title>
@@ -237,26 +263,6 @@
   </entry>
   
   <entry>
-    <title>yum命令的简单使用</title>
-    <link href="http://blog.xiaqiguo.com/2017/07/22/yum%E5%91%BD%E4%BB%A4%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
-    <id>http://blog.xiaqiguo.com/2017/07/22/yum命令的简单使用/</id>
-    <published>2017-07-21T16:00:00.000Z</published>
-    <updated>2018-05-01T13:45:51.956Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;平时维护着一台个人阿里云服务器，上面跑着blog和一些小玩意。管理程序经常使用yum命令，所以总结下它的一些常用的用法。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="运维" scheme="http://blog.xiaqiguo.com/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    
-      <category term="Linux" scheme="http://blog.xiaqiguo.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Java静态导入</title>
     <link href="http://blog.xiaqiguo.com/2017/07/22/%E9%9D%99%E6%80%81%E5%AF%BC%E5%85%A5%E6%B5%85%E6%9E%90/"/>
     <id>http://blog.xiaqiguo.com/2017/07/22/静态导入浅析/</id>
@@ -279,6 +285,26 @@
     
     
       <category term="Java" scheme="http://blog.xiaqiguo.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>yum命令的简单使用</title>
+    <link href="http://blog.xiaqiguo.com/2017/07/22/yum%E5%91%BD%E4%BB%A4%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
+    <id>http://blog.xiaqiguo.com/2017/07/22/yum命令的简单使用/</id>
+    <published>2017-07-21T16:00:00.000Z</published>
+    <updated>2018-05-01T13:45:51.956Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;平时维护着一台个人阿里云服务器，上面跑着blog和一些小玩意。管理程序经常使用yum命令，所以总结下它的一些常用的用法。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="运维" scheme="http://blog.xiaqiguo.com/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="Linux" scheme="http://blog.xiaqiguo.com/tags/Linux/"/>
     
   </entry>
   
